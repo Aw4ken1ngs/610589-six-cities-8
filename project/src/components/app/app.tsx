@@ -1,5 +1,6 @@
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
+import Error from '../error/error';
 import PrivateRoute from '../private-route/private-route';
 import MainPage from '../main-page/main-page';
 import Favorites from '../favorites/favorites';
@@ -23,8 +24,8 @@ function App({ cardCount }: AppScreenProps): JSX.Element {
             cardCount={cardCount}
           />
         </Route>
-        <Route exact path={AppRoute.Favorites}>
-          <Favorites />
+        <Route exact path={AppRoute.Property}>
+          <Property />
         </Route>
         <Route exact path={AppRoute.FavoritesEmpty}>
           <FavoritesEmpty />
@@ -40,13 +41,16 @@ function App({ cardCount }: AppScreenProps): JSX.Element {
         </Route>
         <PrivateRoute
           exact
-          path={AppRoute.Property}
-          render={() => <Property />}
+          path={AppRoute.Favorites}
+          render={() => <Favorites />}
           authorizationStatus={AuthorizationStatus.NoAuth}
         >
         </PrivateRoute>
         <Route exact path={AppRoute.PropertyNotLogged}>
           <PropertyNotLogged />
+        </Route>
+        <Route>
+          <Error />
         </Route>
       </Switch>
     </BrowserRouter>
