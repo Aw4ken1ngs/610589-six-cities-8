@@ -7,50 +7,52 @@ import Favorites from '../favorites/favorites';
 import FavoritesEmpty from '../favorites-empty/favorites-empty';
 import Login from '../login/login';
 import MainPageEmpty from '../main-page-empty/main-page-empty';
-import Offer from '../offer/offer';
-import Property from '../property/property';
-import PropertyNotLogged from '../property-not-logged/property-not-logged';
+import RoomScreen from '../room-screen/room-screen';
+import { Offer } from '../../types/offer';
+import { Review } from '../../types/review';
 
 type AppScreenProps = {
-  cardCount: number;
+  offers: Offer[];
+  reviews: Review[];
 }
 
-function App({ cardCount }: AppScreenProps): JSX.Element {
+function App({ offers, reviews }: AppScreenProps): JSX.Element {
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path={AppRoute.Main}>
           <MainPage
-            cardCount={cardCount}
+            offers={offers}
           />
-        </Route>
-        <Route exact path={AppRoute.Property}>
-          <Property />
-        </Route>
-        <Route exact path={AppRoute.FavoritesEmpty}>
-          <FavoritesEmpty />
         </Route>
         <Route exact path={AppRoute.SignIn}>
           <Login />
         </Route>
-        <Route exact path={AppRoute.MainPageEmpty}>
-          <MainPageEmpty />
-        </Route>
-        <Route exact path={AppRoute.Room}>
-          <Offer />
-        </Route>
         <PrivateRoute
           exact
           path={AppRoute.Favorites}
-          render={() => <Favorites />}
-          authorizationStatus={AuthorizationStatus.NoAuth}
+          render={() => <Favorites offers={offers} />}
+          authorizationStatus={AuthorizationStatus.Auth}
         >
         </PrivateRoute>
-        <Route exact path={AppRoute.PropertyNotLogged}>
-          <PropertyNotLogged />
+        <Route exact path={AppRoute.Room}>
+          <RoomScreen
+            offers={offers}
+            reviews={reviews}
+            setNewReviews={(formData) => {
+              // eslint-disable-next-line no-alert
+              alert(`Function 'setNewReviews' isn't implemented. setRating: ${formData.rating} setComment: ${formData.comment}`);
+            }}
+          />
         </Route>
         <Route>
           <Error />
+        </Route>
+        <Route>
+          <FavoritesEmpty />
+        </Route>
+        <Route>
+          <MainPageEmpty />
         </Route>
       </Switch>
     </BrowserRouter>

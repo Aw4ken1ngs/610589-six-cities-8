@@ -3,10 +3,6 @@ export enum AppRoute {
   SignIn = '/login',
   Favorites = '/favorites',
   Room = '/offer/:id',
-  FavoritesEmpty = '/FavoritesEmpty',
-  MainPageEmpty = '/MainPageEmpty',
-  Property = '/Property',
-  PropertyNotLogged = '/PropertyNotLogged',
 }
 
 export enum AuthorizationStatus {
@@ -14,3 +10,7 @@ export enum AuthorizationStatus {
   NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN',
 }
+
+export const MAX_RATING = 5;
+export const MAX_GALLERY_IMAGES = 6;
+export const MAX_NEAR_CARD = 3;
