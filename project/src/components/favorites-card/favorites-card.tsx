@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Offer } from '../../types/offer';
-import { getRatingWidth } from '../../utils/utils';
+import { getRatingStarsWidth } from '../../utils/utils';
 import { AppRoute } from '../../const';
 
 type FavoritesCardProps = {
@@ -39,7 +39,7 @@ function FavoritesCard({ key, offer }: FavoritesCardProps): JSX.Element {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: `${getRatingWidth(rating)}%` }}></span>
+            <span style={{ width: `${getRatingStarsWidth(rating)}%` }}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>

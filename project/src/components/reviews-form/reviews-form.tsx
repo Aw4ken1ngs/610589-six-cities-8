@@ -1,4 +1,4 @@
-import { useState, FormEvent } from 'react';
+import React, { useState, FormEvent } from 'react';
 import { UserNewReview } from '../../types/review';
 
 type ReviewsFormProps = {
@@ -11,6 +11,15 @@ function ReviewsForm({ setNewReviews }: ReviewsFormProps): JSX.Element {
     rating: 0,
     comment: '',
   });
+
+
+  const onChange = ({ target }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const value = parseInt(target.value, 10);
+    setFormData({
+      ...formData,
+      [target.name]: value,
+    });
+  };
 
   return (
     <form
@@ -30,13 +39,7 @@ function ReviewsForm({ setNewReviews }: ReviewsFormProps): JSX.Element {
           value="5"
           id="5-stars"
           type="radio"
-          onChange={({ target }) => {
-            const value = parseInt(target.value, 10);
-            setFormData({
-              ...formData,
-              rating: value,
-            });
-          }}
+          onChange={onChange}
         />
         <label htmlFor="5-stars" className="reviews__rating-label form__rating-label" title="perfect">
           <svg className="form__star-image" width="37" height="33">
@@ -50,13 +53,7 @@ function ReviewsForm({ setNewReviews }: ReviewsFormProps): JSX.Element {
           value="4"
           id="4-stars"
           type="radio"
-          onChange={({ target }) => {
-            const value = parseInt(target.value, 10);
-            setFormData({
-              ...formData,
-              rating: value,
-            });
-          }}
+          onChange={onChange}
         />
         <label htmlFor="4-stars" className="reviews__rating-label form__rating-label" title="good">
           <svg className="form__star-image" width="37" height="33">
@@ -70,13 +67,7 @@ function ReviewsForm({ setNewReviews }: ReviewsFormProps): JSX.Element {
           value="3"
           id="3-stars"
           type="radio"
-          onChange={({ target }) => {
-            const value = parseInt(target.value, 10);
-            setFormData({
-              ...formData,
-              rating: value,
-            });
-          }}
+          onChange={onChange}
         />
         <label htmlFor="3-stars" className="reviews__rating-label form__rating-label" title="not bad">
           <svg className="form__star-image" width="37" height="33">
@@ -90,13 +81,7 @@ function ReviewsForm({ setNewReviews }: ReviewsFormProps): JSX.Element {
           value="2"
           id="2-stars"
           type="radio"
-          onChange={({ target }) => {
-            const value = parseInt(target.value, 10);
-            setFormData({
-              ...formData,
-              rating: value,
-            });
-          }}
+          onChange={onChange}
         />
         <label htmlFor="2-stars" className="reviews__rating-label form__rating-label" title="badly">
           <svg className="form__star-image" width="37" height="33">
@@ -110,13 +95,7 @@ function ReviewsForm({ setNewReviews }: ReviewsFormProps): JSX.Element {
           value="1"
           id="1-star"
           type="radio"
-          onChange={({ target }) => {
-            const value = parseInt(target.value, 10);
-            setFormData({
-              ...formData,
-              rating: value,
-            });
-          }}
+          onChange={onChange}
         />
         <label htmlFor="1-star" className="reviews__rating-label form__rating-label" title="terribly">
           <svg className="form__star-image" width="37" height="33">
@@ -127,15 +106,9 @@ function ReviewsForm({ setNewReviews }: ReviewsFormProps): JSX.Element {
       <textarea
         className="reviews__textarea form__textarea"
         id="review"
-        name="review"
+        name="comment"
         placeholder="Tell how was your stay, what you like and what can be improved"
-        onChange={({ target }) => {
-          const value = target.value;
-          setFormData({
-            ...formData,
-            comment: value,
-          });
-        }}
+        onChange={onChange}
       >
       </textarea>
       <div className="reviews__button-wrapper">

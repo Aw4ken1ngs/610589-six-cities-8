@@ -1,12 +1,12 @@
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
-import Error from '../error/error';
+//import Error from '../error/error';
 import PrivateRoute from '../private-route/private-route';
 import MainPage from '../main-page/main-page';
 import Favorites from '../favorites/favorites';
-import FavoritesEmpty from '../favorites-empty/favorites-empty';
+//import FavoritesEmpty from '../favorites-empty/favorites-empty';
 import Login from '../login/login';
-import MainPageEmpty from '../main-page-empty/main-page-empty';
+//import MainPageEmpty from '../main-page-empty/main-page-empty';
 import RoomScreen from '../room-screen/room-screen';
 import { Offer } from '../../types/offer';
 import { Review } from '../../types/review';
@@ -44,15 +44,6 @@ function App({ offers, reviews }: AppScreenProps): JSX.Element {
               alert(`Function 'setNewReviews' isn't implemented. setRating: ${formData.rating} setComment: ${formData.comment}`);
             }}
           />
-        </Route>
-        <Route>
-          <Error />
-        </Route>
-        <Route>
-          <FavoritesEmpty />
-        </Route>
-        <Route>
-          <MainPageEmpty />
         </Route>
       </Switch>
     </BrowserRouter>

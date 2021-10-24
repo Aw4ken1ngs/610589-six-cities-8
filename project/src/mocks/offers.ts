@@ -27,7 +27,7 @@ export const Offers: Offer[] = [
       isPro: true,
       name: 'Angelina',
     },
-    id: 1,
+    id: 666,
     images: [
       '/img/apartment-01.jpg',
       '/img/apartment-02.jpg',
@@ -67,7 +67,7 @@ export const Offers: Offer[] = [
       isPro: true,
       name: 'Angelina',
     },
-    id: 2,
+    id: 2222,
     images: [
       '/img/apartment-01.jpg',
       '/img/apartment-02.jpg',
@@ -109,7 +109,7 @@ export const Offers: Offer[] = [
       isPro: false,
       name: 'Max',
     },
-    id: 3,
+    id: 3333,
     images: [
       '/img/apartment-01.jpg',
       '/img/apartment-02.jpg',
@@ -157,7 +157,7 @@ export const Offers: Offer[] = [
       isPro: false,
       name: 'Max',
     },
-    id: 4,
+    id: 4444,
     images: [
       '/img/apartment-01.jpg',
       '/img/apartment-02.jpg',

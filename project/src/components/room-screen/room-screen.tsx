@@ -5,7 +5,7 @@ import { Offer } from '../../types/offer';
 import { Review, UserNewReview } from '../../types/review';
 import { MAX_GALLERY_IMAGES, MAX_NEAR_CARD } from '../../const';
 import { useState, useEffect } from 'react';
-import { getRatingWidth } from '../../utils/utils';
+import { getRatingStarsWidth } from '../../utils/utils';
 
 type RoomScreenProps = {
   offers: Offer[];
@@ -20,7 +20,7 @@ function RoomScreen({ offers, reviews, setNewReviews }: RoomScreenProps): JSX.El
     description,
     goods,
     host,
-    id,
+    //id,
     images,
     isFavorite,
     isPremium,
@@ -53,7 +53,7 @@ function RoomScreen({ offers, reviews, setNewReviews }: RoomScreenProps): JSX.El
           <div className="property__gallery-container container">
             <div className="property__gallery">
               {images.slice(0, MAX_GALLERY_IMAGES).map((image) => (
-                <div key={id} className="property__image-wrapper">
+                <div key={image} className="property__image-wrapper">
                   <img className="property__image" src={image} alt={title} />
                 </div>))}
             </div>
@@ -79,7 +79,7 @@ function RoomScreen({ offers, reviews, setNewReviews }: RoomScreenProps): JSX.El
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{ width: `${getRatingWidth(rating)}%` }}></span>
+                  <span style={{ width: `${getRatingStarsWidth(rating)}%` }}></span>
                   <span className="visually-hidden">Rating</span>
                 </div>
                 <span className="property__rating-value rating__value">{rating}</span>
@@ -103,7 +103,7 @@ function RoomScreen({ offers, reviews, setNewReviews }: RoomScreenProps): JSX.El
                 <h2 className="property__inside-title">What&apos;s inside</h2>
                 <ul className="property__inside-list">
                   {goods.map((good) => (
-                    <li key={id} className="property__inside-item">
+                    <li className="property__inside-item" key={good}>
                       {good}
                     </li>))}
                 </ul>

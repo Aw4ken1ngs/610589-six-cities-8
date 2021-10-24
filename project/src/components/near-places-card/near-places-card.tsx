@@ -2,14 +2,13 @@ import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import { Offer } from '../../types/offer';
 import { useState, useEffect } from 'react';
-import { getRatingWidth } from '../../utils/utils';
+import { getRatingStarsWidth } from '../../utils/utils';
 
 type NearPlacesCardProps = {
-  key: number;
   offer: Offer;
 }
 
-function NearPlacesCard({ key, offer }: NearPlacesCardProps): JSX.Element {
+function NearPlacesCard({ offer }: NearPlacesCardProps): JSX.Element {
   const {
     title,
     previewImage,
@@ -30,7 +29,7 @@ function NearPlacesCard({ key, offer }: NearPlacesCardProps): JSX.Element {
   const favoriteMark = favorite ? 'place-card__bookmark-button--active button' : 'place-card__bookmark-button button';
 
   return (
-    <article key={key} className="near-places__card place-card">
+    <article className="near-places__card place-card">
       {premiumMark}
       <div className="near-places__image-wrapper place-card__image-wrapper">
         <Link to={AppRoute.Room}>
@@ -56,7 +55,7 @@ function NearPlacesCard({ key, offer }: NearPlacesCardProps): JSX.Element {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: `${getRatingWidth(rating)}%` }}></span>
+            <span style={{ width: `${getRatingStarsWidth(rating)}%` }}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>

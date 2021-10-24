@@ -10,6 +10,8 @@ type ReviewsListProps = {
 function ReviewsList({ firstReviews, setNewReviews }: ReviewsListProps): JSX.Element {
 
   const ReviewsCount = firstReviews.comments.length;
+  // eslint-disable-next-line no-console
+  console.log(firstReviews.comments);
   return (
     <section className="property__reviews reviews">
       <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{ReviewsCount}</span></h2>
