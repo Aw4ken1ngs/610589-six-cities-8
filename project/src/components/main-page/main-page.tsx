@@ -1,12 +1,23 @@
 import CitiesListCards from '../cities-list-cards/cities-list-cards';
 import Header from '../header/header';
 import { Offer } from '../../types/offer';
+import { useState } from 'react';
+import Map from '../map/map';
 
 type MainPageProps = {
   offers: Offer[];
 }
 function MainPage({ offers }: MainPageProps): JSX.Element {
   const offersCount = offers.length;
+  const points = offers.map((offer) => ({ location: offer.location, id: offer.id }));
+  const city = offers[0].city;
+  const [selectedPoint, setSelectedPoint] = useState<number | undefined>(
+    undefined,
+  );
+
+  const onListItemHover = (id: number) => {
+    setSelectedPoint(id);
+  };
   return (
     <div className="page page--gray page--main">
       <Header />
@@ -70,10 +81,13 @@ function MainPage({ offers }: MainPageProps): JSX.Element {
               </form>
               <CitiesListCards
                 offers={offers}
+                onListItemHover={onListItemHover}
               />
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <section className="cities__map map">
+                <Map city={city} points={points} selectedPoint={selectedPoint} />
+              </section>
             </div>
           </div>
         </div>

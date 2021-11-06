@@ -6,7 +6,7 @@ import { getRatingStarsWidth } from '../../utils/utils';
 
 type CitiesCardScreenProps = {
   offer: Offer;
-  handleHoverCard: (offer: Offer) => void;
+  handleHoverCard: (id: number) => void;
 }
 
 function CitiesCard({ offer, handleHoverCard }: CitiesCardScreenProps): JSX.Element {
@@ -31,7 +31,7 @@ function CitiesCard({ offer, handleHoverCard }: CitiesCardScreenProps): JSX.Elem
 
   return (
     <article className="cities__place-card place-card"
-      onMouseEnter={() => handleHoverCard(offer)}
+      onMouseEnter={() => handleHoverCard(offer.id)}
     >
       {premiumMark}
       <div className="cities__image-wrapper place-card__image-wrapper">
